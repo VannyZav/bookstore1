@@ -1,5 +1,6 @@
 from flask import Flask
 
+
 from views.book import bp as book_bp
 from context_ import Context_
 

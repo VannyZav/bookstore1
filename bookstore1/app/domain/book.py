@@ -1,13 +1,12 @@
-import datetime
 
-from abc import abstractmethod
-from dataclasses import dataclass
+from sqlalchemy.orm import Mapped, mapped_column
+
+from bookstore1.app.infra.storage.sqlite_storage import db
 
 
-@dataclass
-class Book:
-    title: str
-    description: str
-    publish_year: int
-    pages_count: int
-    created_at: datetime.datetime
+class Book(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    title: Mapped[str] = mapped_column(unique=True)
+    author: Mapped[str]
+    publish_year: Mapped[int]
+    pages_count: Mapped[int]
