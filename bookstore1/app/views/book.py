@@ -15,16 +15,18 @@ bp = Blueprint("book", __name__)
 def get_books():
     ctx = get_context(current_app)
     book = ctx.book_service.get()
-    return Book_Schema.dump(book)
+    return Book_Schema().dump(book)
 
 
 @bp.route("/", methods=["POST"])
 def add_book():
     ctx = get_context(current_app)
 
-    book = Book_Schema().load(**request.json)
+    book_data = request.get_json()
+    book = Book_Schema().load(book_data)
+    # book = Book_Schema().load(**request.get_json())
     book_id = ctx.book_service.add(book)
-    return jsonify({"id": book_id, "book": book})
+    return Book_Schema().dump(book_id)
 
 
 @bp.route("/<id>", methods=["DELETE"])

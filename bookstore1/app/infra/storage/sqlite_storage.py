@@ -4,10 +4,6 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# from domain.book import Book
-
-
-# from bookstore1.app.bookstore import app
 
 
 class Base(DeclarativeBase):
@@ -15,12 +11,6 @@ class Base(DeclarativeBase):
 
 
 db = SQLAlchemy(model_class=Base)
-
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bookstore1.db'
-# db.app = app
-
-# db.init_app(app)
-
 
 
 class SqliteStorage:
@@ -33,12 +23,12 @@ class SqliteStorage:
 
     def get(self):
         try:
-            query = db.session.query().all()
+            query = db.session.get
             return query
         except NoResultFound as NoRes:
             sub_report_id = []
             return sub_report_id
 
-    def add(book):
+    def add(self, book):
         db.session.add(book)
         db.session.commit()

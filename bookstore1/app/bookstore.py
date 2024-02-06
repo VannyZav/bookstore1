@@ -1,4 +1,5 @@
 from flask import Flask
+from sqlalchemy import create_engine
 
 from infra.storage.sqlite_storage import db
 from views.book import bp as book_bp
@@ -15,4 +16,3 @@ def create_app():
 
 
 app = create_app()
-

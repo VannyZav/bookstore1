@@ -10,3 +10,5 @@ class Book(db.Model):
     author: Mapped[str]
     publish_year: Mapped[int]
     pages_count: Mapped[int]
+
+

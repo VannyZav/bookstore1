@@ -7,7 +7,7 @@ from infra.storage.sqlite_storage import SqliteStorage
 
 class Context_:
     def __init__(self):
-        book_storage = SqliteStorage('sqlite:///bookstore1.db')
+        book_storage = SqliteStorage('bookstore1.db')
         self.book_service = BookService(book_storage)
 
 

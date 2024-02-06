@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50d8b4a9-c6b1-4838-ab57-928e04b894e5" name="Changes" comment="чепкпоинт коммит 5" />
+    <list default="true" id="50d8b4a9-c6b1-4838-ab57-928e04b894e5" name="Changes" comment="чепкпоинт коммит 6">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore1/app/infra/storage/sqlite_storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookstore1/app/infra/storage/sqlite_storage.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +47,12 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\imac-\projects\bookstore1" />
+      <recent name="C:\Users\imac-\projects\bookstore1\bookstore1" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.bookstore">
     <configuration name="bookstore" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bookstore1" />
@@ -188,7 +197,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707212758972</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="чепкпоинт коммит 6">
+      <option name="closed" value="true" />
+      <created>1707213645538</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707213645538</updated>
+    </task>
+    <task id="LOCAL-00007" summary="чепкпоинт коммит 6">
+      <option name="closed" value="true" />
+      <created>1707213804281</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707213804281</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +233,7 @@
     <MESSAGE value="чепкпоинт коммит 3" />
     <MESSAGE value="чепкпоинт коммит 4" />
     <MESSAGE value="чепкпоинт коммит 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="чепкпоинт коммит 5" />
+    <MESSAGE value="чепкпоинт коммит 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="чепкпоинт коммит 6" />
   </component>
 </project>
