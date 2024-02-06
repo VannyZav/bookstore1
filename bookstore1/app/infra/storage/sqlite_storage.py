@@ -1,7 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import NoResultFound
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+# from domain.book import Book
+
 
 # from bookstore1.app.bookstore import app
 
@@ -14,8 +18,9 @@ db = SQLAlchemy(model_class=Base)
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bookstore1.db'
 # db.app = app
+
 # db.init_app(app)
-# db.create_all()
+
 
 
 class SqliteStorage:
@@ -30,6 +35,10 @@ class SqliteStorage:
         try:
             query = db.session.query().all()
             return query
-        except Exception as e:
-            return e
+        except NoResultFound as NoRes:
+            sub_report_id = []
+            return sub_report_id
 
+    def add(book):
+        db.session.add(book)
+        db.session.commit()
