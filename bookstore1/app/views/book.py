@@ -5,6 +5,7 @@ from flask import Blueprint, current_app, request, jsonify
 
 from context_ import get_context
 from domain.book import Book
+from marshmallow import ValidationError
 
 from views.book_shema import Book_Schema
 
@@ -21,12 +22,32 @@ def get_books():
 @bp.route("/", methods=["POST"])
 def add_book():
     ctx = get_context(current_app)
+    try:
+        book_data = Book_Schema().load(request.json)
+    except ValidationError as err:
+        return err.messages, 400
+
+    book = Book(**book_data)
+    try:
+        book = ctx.book_service.add(book)
+    except Exception as e:
+        return {
+            "errorrrr": repr(e),
+            "data": book_data
+        }
+
+    return Book_Schema().dump(book)
+
+
+
+
+
 
     book_data = request.get_json()
-    book = Book_Schema().load(book_data)
+    # book = Book_Schema().load(book_data)
     # book = Book_Schema().load(**request.get_json())
-    book_id = ctx.book_service.add(book)
-    return Book_Schema().dump(book_id)
+    book_id = ctx.book_service.add(book_data)
+    return #  Book_Schema().dump(book_id)
 
 
 @bp.route("/<id>", methods=["DELETE"])

@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 
+
 class Base(DeclarativeBase):
     pass
 
@@ -23,7 +24,8 @@ class SqliteStorage:
 
     def get(self):
         try:
-            query = db.session.get
+            from domain.book import Book
+            query = db.session.query(Book)
             return query
         except NoResultFound as NoRes:
             sub_report_id = []
