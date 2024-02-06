@@ -1,7 +1,7 @@
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from bookstore1.app.infra.storage.sqlite_storage import db
+from infra.storage.sqlite_storage import db
 
 
 class Book(db.Model):

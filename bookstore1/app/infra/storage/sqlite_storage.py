@@ -3,7 +3,7 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from bookstore1.app.bookstore import app
+# from bookstore1.app.bookstore import app
 
 
 class Base(DeclarativeBase):
@@ -12,10 +12,10 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bookstore1.db'
-db.app = app
-db.init_app(app)
-db.create_all()
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bookstore1.db'
+# db.app = app
+# db.init_app(app)
+# db.create_all()
 
 
 class SqliteStorage:
@@ -25,3 +25,11 @@ class SqliteStorage:
 
     def get_session(self):
         return self.Session()
+
+    def get(self):
+        try:
+            query = db.session.query().all()
+            return query
+        except Exception as e:
+            return e
+

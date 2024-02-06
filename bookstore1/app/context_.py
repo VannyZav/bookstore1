@@ -1,6 +1,6 @@
 from flask import g
 
-from bookstore1.app.application.book_service import BookService
+from application.book_service import BookService
 # from infra.storage.mem_storage import MemoryStorage
 from infra.storage.sqlite_storage import SqliteStorage
 

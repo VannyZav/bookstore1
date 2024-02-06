@@ -1,10 +1,10 @@
 import dataclasses
 import json
 
-from flask import Blueprint, current_app, request
+from flask import Blueprint, current_app, request, jsonify
 
-from bookstore1.app.context_ import get_context
-from bookstore1.app.domain.book import Book
+from context_ import get_context
+from domain.book import Book
 
 bp = Blueprint("book", __name__)
 
@@ -13,7 +13,7 @@ bp = Blueprint("book", __name__)
 def get_books():
     ctx = get_context(current_app)
 
-    return json.dumps([dataclasses.asdict(b) for b in ctx.book_service.get()])
+    return json.dumps(ctx.book_service.get())
 
 
 @bp.route("/", methods=["POST"])
