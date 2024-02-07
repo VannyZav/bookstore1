@@ -8,3 +8,4 @@ class Book_Schema(Schema):
     publish_year = fields.Integer()
     pages_count = fields.Integer()
 
+

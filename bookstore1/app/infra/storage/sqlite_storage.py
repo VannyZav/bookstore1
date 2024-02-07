@@ -25,8 +25,12 @@ class SqliteStorage:
     def get(self):
         try:
             from domain.book import Book
-            query = db.session.query(Book)
-            return query
+            books = Book.query.all()
+            # book_list = []
+            # for book in books:
+            #     book_list.append(book)
+
+            return books
         except NoResultFound as NoRes:
             sub_report_id = []
             return sub_report_id
@@ -34,3 +38,4 @@ class SqliteStorage:
     def add(self, book):
         db.session.add(book)
         db.session.commit()
+        return book
