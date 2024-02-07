@@ -5,8 +5,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-
-
 class Base(DeclarativeBase):
     pass
 
@@ -22,15 +20,18 @@ class SqliteStorage:
     def get_session(self):
         return self.Session()
 
-    def get(self):
+    def get_book_by_id(self, id):
+        from domain.book import Book
+        book = Book.query.get(id)
+
+        return book
+
+    def get_all(self):
         try:
             from domain.book import Book
             books = Book.query.all()
-            # book_list = []
-            # for book in books:
-            #     book_list.append(book)
-
             return books
+
         except NoResultFound as NoRes:
             sub_report_id = []
             return sub_report_id
@@ -39,3 +40,11 @@ class SqliteStorage:
         db.session.add(book)
         db.session.commit()
         return book
+
+    def delete(self, id):
+        from domain.book import Book
+        book = Book.query.get(id)
+        db.session.delete(book)
+        db.session.commit()
+        return book
+

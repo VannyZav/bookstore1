@@ -1,7 +1,7 @@
 import dataclasses
 import json
 
-from flask import Blueprint, current_app, request, jsonify, make_response
+from flask import Blueprint, current_app, request, make_response, jsonify
 
 from context_ import get_context
 from domain.book import Book
@@ -15,11 +15,11 @@ bp = Blueprint("book", __name__)
 @bp.route("/")
 def get_books():
     ctx = get_context(current_app)
-    books = ctx.book_service.get()
+    books = ctx.book_service.get_all()
     response = make_response(Book_Schema(many=True).dump(books))
     response.headers['Content-Type'] = 'application/json'
 
-    return response
+    return response, 200
 
 
 @bp.route("/", methods=["POST"])
@@ -35,22 +35,12 @@ def add_book():
         book = ctx.book_service.add(book)
     except Exception as e:
         return {
-            "errorrrr": repr(e),
+            "errorrrr": "failed to add book",
             "data": book_data
         }
-
-    return Book_Schema().dump(book)
-
-
-
-
-
-
-    # book_data = request.get_json()
-    # book = Book_Schema().load(book_data)
-    # book = Book_Schema().load(**request.get_json())
-    # book_id = ctx.book_service.add(book_data)
-    # return #  Book_Schema().dump(book_id)
+    response = make_response(Book_Schema().dump(book))
+    response.headers['Content-Type'] = 'application/json'
+    return response, 201
 
 
 @bp.route("/<id>", methods=["DELETE"])
@@ -58,5 +48,26 @@ def delete_book(id):
     ctx = get_context(current_app)
 
     ctx.book_service.delete(id)
+    response = make_response({"status": f"book with id {id} successfully deleted"})
+    response.headers['Content-Type'] = 'application/json'
+    return response
 
-    return {}
+
+@bp.route("/<id>")
+def get_book_by_id(id):
+    ctx = get_context(current_app)
+
+    book = ctx.book_service.get_book_by_id(id)
+
+    if book:
+
+        response = make_response(Book_Schema().dump(book))
+        response.headers['Content-Type'] = 'application/json'
+        return response,
+    if book is None:
+        response1 = make_response({
+            "error": 'Not found'
+        }, )
+        response1.headers['Content-Type'] = 'application/json'
+        return response1, 404
+

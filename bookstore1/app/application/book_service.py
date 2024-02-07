@@ -8,5 +8,8 @@ class BookService:
     def delete(self, id):
         self.storage.delete(id)
 
-    def get(self):
-        return self.storage.get()
+    def get_all(self):
+        return self.storage.get_all()
+
+    def get_book_by_id(self, id):
+        return self.storage.get_book_by_id(id)
