@@ -1,13 +1,13 @@
 from flask import g
 
-from bookstore1.app.application.book_service import BookService
+from application.book_service import BookService
 # from infra.storage.mem_storage import MemoryStorage
 from infra.storage.sqlite_storage import SqliteStorage
 
 
 class Context_:
     def __init__(self):
-        book_storage = SqliteStorage('sqlite:///bookstore1.db')
+        book_storage = SqliteStorage('bookstore1.db')
         self.book_service = BookService(book_storage)
 
 
